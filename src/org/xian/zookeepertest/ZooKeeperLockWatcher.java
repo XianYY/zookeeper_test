@@ -33,8 +33,8 @@ public class ZooKeeperLockWatcher {
                             List<String> children = zk.getChildren("/lock", false);
                             Map<String, String> childContent = new HashMap<String, String>();
                             for (String child : children) {
-                                String ip = new String(zk.getData("/lock/" + child, false, null));
-                                childContent.put(child, ip);
+                                String sessionId = new String(zk.getData("/lock/" + child, false, null));
+                                childContent.put(child, sessionId);
                             }
                             System.out.println(childContent);
                         } catch (Exception e) {
